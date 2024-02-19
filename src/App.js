@@ -11,10 +11,12 @@ import Error from './pages/Error';
 import Dashboard, { dashboardAction, dashboardLoader } from "./pages/Dashboard";
 import Main, { mainLoader } from "./layouts/Main";
 import { logoutAction } from './actions/logout';
+import ExpensesPage, { expenseAction, expensesLoader } from './pages/ExpensesPage'
 
 //toast message
 import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
+import BudgetPage, { budgetAction, budgetLoader } from './pages/BudgetPage';
 
 const router = createBrowserRouter([
   // { 
@@ -34,6 +36,18 @@ const router = createBrowserRouter([
         loader: dashboardLoader,
         action: dashboardAction,
         errorElement: <Error />,
+      },
+      { 
+        path: "budget/:id",
+        element: <BudgetPage />,
+        loader: budgetLoader,
+        action: budgetAction,
+      },
+      { 
+        path: "expenses",
+        element: <ExpensesPage />,
+        loader: expensesLoader,
+        action: expenseAction,
       },
       {
         path: "logout",

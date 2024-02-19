@@ -1,9 +1,9 @@
-export const waait = () => new Promise (res => setTimeout(res, Math.random()*2000))
+export const waait = () => new Promise (res => setTimeout(res, Math.random()*800))
 
 //colors
 const generateRandomColor = () => {
     const existingBudgetLength = fetchData("budgets")?.length ?? 0;
-    return '${existingBudgetLength * 34} 65% 50%';
+    return `${existingBudgetLength * 34} 65% 50%`
 }
 //local storage
 export const fetchData = (key) => {
@@ -20,20 +20,39 @@ export const createBudget = ({name, amount}) => {
         color: generateRandomColor()
     }
     const existingBudgets = fetchData("budgets") ?? [];
-    return localStorage.setItem("budgets", JSON.stringify([existingBudgets,newItem]));
-}
-expenses
-//delete item
-export const deleteItem = ({key}) => {
-    localStorage.removeItem(key);
+    return localStorage.setItem("budgets", JSON.stringify([...existingBudgets,newItem]));
 }
 
 //format currency
 export const formatCurrency = (amt) => {
-    return amt.toLocaleString(undefined, {
-        style: "currency",
-        currency: "USD",
-    })
+    // return amt.toLocaleString(undefined, {
+    //     style: "currency",
+    //     currency: "USD",
+    // })
+    if (typeof amt === 'number' && !isNaN(amt)) {
+        return amt.toLocaleString(undefined, {
+            style: "currency",
+            currency: "USD",
+        });
+    } else {
+        return ""; // or any other default value or error handling you prefer
+    }
+}
+
+//formatting percentage
+export const formatPercentage = (amt) => {
+    // return amt.toLocaleString(undefined, {
+    //     style: "percent",
+    //     minimunFractionDigits: 0,
+    // })
+    if (typeof amt === 'number') {
+        return amt.toLocaleString(undefined, {
+            style: "percent",
+            minimumFractionDigits: 0,
+        });
+    } else {
+        return ""; // or any other default value or error handling you prefer
+    }
 }
 
 // create expense
@@ -54,6 +73,31 @@ export const createExpense = ({
 
   //total spent by budget
   export const calculateSpentByBudget = (budgetId) => {
-    const expenses = fetchDate("expenses") ?? [];
-    const budgetSpent = expenses.reduce();
+    const expenses = fetchData("expenses") ?? [];
+    const budgetSpent = expenses.reduce((acc, expense) => 
+    {
+        if(expense.budgetId !== budgetId) return acc;
+        return acc += expense.amount;
+    },0);
+    return budgetSpent;
+  }
+
+  //format date
+  export const formatDateToLocaleString = (epoch) => 
+  new Date(epoch).toLocaleDateString();
+
+  //get all items from local storage
+  export const getAllMatchingItems = ({category, key, value}) => {
+    const data = fetchData(category) ?? [];
+    return data.filter((item) => item[key] === value);
+  }
+
+  //delete item from local storage
+  export const deleteItem = ({key,id}) => {
+        const existingData = fetchData(key);
+        if(id){
+            const newData = existingData.filter((item) => item.id!== id);
+            return localStorage.setItem(key, JSON.stringify(newData))
+        }
+        return localStorage.removeItem(key);
   }

@@ -1,5 +1,6 @@
 import {React,useEffect,useRef} from 'react'
 import { useFetcher } from 'react-router-dom'
+import { GoPlusCircle } from "react-icons/go";
 
 const AddExpenseForm = ({budgets}) => {
     const fetcher = useFetcher();
@@ -17,8 +18,8 @@ const AddExpenseForm = ({budgets}) => {
   return (
     <div className='form-wrapper'>
         <h2 className='h3'>
-            Add New <span className='accent'>{budgets.length === 1 && '${budgets.map((budg)=> budg.name)}'}</span>
-            {""}Expense
+            Add New <span className='accent'>{budgets.length === 1 && `${budgets.map((budg) => budg.name)}`}</span>
+            {" "}Expense
         </h2>
         <fetcher.Form method='post' className='grid-sm' ref={formRef}>
             <div className='expense-inputs'>
@@ -28,7 +29,7 @@ const AddExpenseForm = ({budgets}) => {
                 </div>
                 <div className='grid-xs'>
                     <label htmlFor='newExpenseAmount'>Amount</label>
-                    <input type='number' step='0.01' inputMode='decimal' name='newExpenseAmount' id='newExpenseAmount' placeholder='e.g., Coffee' ref={focusRef} required/>
+                    <input type='number' step='0.01' inputMode='decimal' name='newExpenseAmount' id='newExpenseAmount' placeholder='e.g., 350' ref={focusRef} required/>
                 </div>
             </div>
             <div className='grid-xs' hidden={budgets.length === 1}>
@@ -43,14 +44,14 @@ const AddExpenseForm = ({budgets}) => {
                         }
                     </select>
                 </div>
-                <input type='hiddden' name='_action' value='createExpense'/>
+                <input type='hidden' name='_action' value='createExpense'/>
                 <button type='submit' className='btn btn-dark' disabled={isSubmitting}>
                     {
                         isSubmitting? <span>Submitting</span>
                         :(
                             <>
-                                <span>Create Budget</span>
-
+                                <span>Add Expense </span>
+                                <GoPlusCircle />
                             </>
                         )
                     }

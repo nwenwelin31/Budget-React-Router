@@ -1,5 +1,5 @@
 import React, { useEffect, useRef } from 'react'
-import { Form, useFetcher } from 'react-router-dom'
+import { useFetcher } from 'react-router-dom'
 import { AiOutlineDollarCircle } from "react-icons/ai";
 
 const AddBudgetForm = () => {
@@ -20,7 +20,7 @@ const AddBudgetForm = () => {
         <h2 className='h3'>Create Budget</h2>
         <fetcher.Form method='post' cla-ssName='grid-sm' ref={formRef}>
             <div className='grid-xs'>
-                <label htmlFor='newBudget'>Budget Name</label>
+                <label htmlFor="newBudget">Budget Name</label>
                 <input type="text" name="newBudget" id="newBudget" placeholder='e.g., Groceries' ref={focusRef} required />
             </div>
             <div className='grid-xs'>
@@ -30,7 +30,7 @@ const AddBudgetForm = () => {
             <input type="hidden" name="_action" value="createBudget"/>
             <button type='submit' className='btn btn-dark mt-2' disabled={isSubmitting}>
                 {
-                    isSubmitting? <span>Create Budget</span>:
+                    isSubmitting? <span>Submitting..</span>:
                     (
                         <>
                             <span>Create Budget</span>
