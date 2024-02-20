@@ -28,7 +28,7 @@ const AddBudgetForm = () => {
                 <input type="number" step="0.01" name="newBudgetAmount" id="newBudgetAmount" placeholder='e.g., $350' inputMode="decimal" required />
             </div>
             <input type="hidden" name="_action" value="createBudget"/>
-            <button type='submit' className='btn btn-dark mt-2' disabled={isSubmitting}>
+            <button type='submit' className='btn btn--dark mt-2' disabled={isSubmitting}>
                 {
                     isSubmitting? <span>Submitting..</span>:
                     (

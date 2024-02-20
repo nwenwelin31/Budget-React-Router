@@ -18,7 +18,7 @@ const Nav = ({userName}) => {
                         event.preventDefault();
                     }
                 }}>
-                    <button type='submit' className='btn btn-warning'>
+                    <button type='submit' className='btn btn--warning'>
                         <BsTrash3Fill />
                         <span>Delete User</span>
                     </button>

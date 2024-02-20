@@ -1,10 +1,10 @@
 // import logo from './logo.svg';
-import './App.css';
+import './index.css';
 import {
   createBrowserRouter,
   RouterProvider,
 } from "react-router-dom";
-import 'bootstrap/dist/css/bootstrap.min.css';
+
 //Routes
 import About from "./About";
 import Error from './pages/Error';

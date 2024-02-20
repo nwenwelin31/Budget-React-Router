@@ -12,11 +12,11 @@ export default function Error() {
       <h1>Uh oh! We've got a problem.</h1>
       <p>{error.message || error.statusText}</p>
       <div className='flex-md'>
-          <button className='btn btn-dark' onClick={() => navigate(-1)}>
+          <button className='btn btn--dark' onClick={() => navigate(-1)}>
               <HiMiniArrowUturnLeft width={20} />
               <span> Go Back</span>
           </button>
-          <Link to="/" className='btn btn-dark'>
+          <Link to="/" className='btn btn--dark'>
               <IoHomeOutline width={20} />
               <span> Go Home</span>
           </Link>
