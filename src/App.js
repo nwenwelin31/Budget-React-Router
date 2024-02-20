@@ -17,7 +17,8 @@ import ExpensesPage, { expenseAction, expensesLoader } from './pages/ExpensesPag
 import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import BudgetPage, { budgetAction, budgetLoader } from './pages/BudgetPage';
-import deleteBudget from './actions/deleteBudget';
+import { deleteBudget } from './actions/deleteBudget';
+
 
 const router = createBrowserRouter([
   // { 
