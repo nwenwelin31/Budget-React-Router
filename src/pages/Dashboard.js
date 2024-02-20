@@ -1,5 +1,5 @@
 // rrd imports
-import { useLoaderData } from "react-router-dom";
+import { Link, useLoaderData } from "react-router-dom";
 import { toast } from "react-toastify";
 import Intro from "../components/Intro";
 import AddBudgetForm from "../components/AddBudgetForm";
@@ -107,7 +107,12 @@ const Dashboard = () => {
                                 <Table expenses={expenses
                                 .sort((a,b) => 
                                 b.createdAt - a.createdAt
-                                )} />
+                                ).slice(0, 3)} />
+                                 {expenses.length > 3 && (
+                                <Link to="expenses" className="btn btn-dark">
+                                  View all expenses
+                                </Link>
+                    )}
                             </div>
                           )
                         }

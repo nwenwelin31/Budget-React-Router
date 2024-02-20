@@ -9,12 +9,16 @@ const BudgetItem = ({budget, showDelete = false}) => {
     const spent = calculateSpentByBudget(id);
 
   return (
-    <div className='budget' style={{ "--accent": color }}>
+    
+    <div className="budget"
+    style={{
+      "--accent": color,
+    }}>
         <div className='progress-text'>
             <h3>{name}</h3>
             <p>{formatCurrency(amount)} budgeted</p>
         </div>
-        <progress max={amount} value="100">
+        <progress max={amount} value={spent}>
             {formatPercentage(spent/amount)}
         </progress>
         <div className='progress-text'>
@@ -33,7 +37,7 @@ const BudgetItem = ({budget, showDelete = false}) => {
                             }
                         }>
 
-                        <button type='submit' className='btn'>
+                        <button type="submit" className="btn">
                             <span>Delete Budget</span>
                             <FaRegTrashCan />
                         </button>

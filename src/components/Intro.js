@@ -4,7 +4,7 @@ import { FaRegUser } from "react-icons/fa";
 import illustration from '../assets/illustration.jpg';
 const Intro = () => {
   return (
-    <div className='intro'>
+    <div className="intro">
         <div>
             <h1 className='text-start'>
                 Take control of <span className='accent'>Your Money</span>
