@@ -6,7 +6,6 @@ import {
 } from "react-router-dom";
 
 //Routes
-import About from "./About";
 import Error from './pages/Error';
 import Dashboard, { dashboardAction, dashboardLoader } from "./pages/Dashboard";
 import Main, { mainLoader } from "./layouts/Main";
@@ -64,14 +63,6 @@ const router = createBrowserRouter([
       },
     ]
   },
-  {
-    path: "/about",
-    element: <About />,
-  },
-  // {
-  //   path: "*",
-  //   element:  <Error />,
-  // },
 ]);
 
 function App() {
